@@ -2,7 +2,7 @@ dvb-mapper
 ==========
 
 If You want to donate for new hardware support: 
-https://www.paypal.com/donate/?hosted_button_id=XWV5VJH6L3DF6
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=XWV5VJH6L3DF6)
 
 Small tool allowing to map DVB devs with known and persistent names.
 
