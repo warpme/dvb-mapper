@@ -1,6 +1,9 @@
 dvb-mapper
 ==========
 
+If You want to donate for new hardware support: 
+https://www.paypal.com/donate/?hosted_button_id=XWV5VJH6L3DF6
+
 Small tool allowing to map DVB devs with known and persistent names.
 
 It is possible that Your MythTV setup has many different DVB cards and some of them have multiple tuners.
