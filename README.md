@@ -1,9 +1,7 @@
 dvb-mapper
 ==========
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=XWV5VJH6L3DF6)
-
-Small tool allowing to map DVB devs with known and persistent names.
+Small tool allowing to map DVB devs with known and persistent names + waiting till all tuners are avaliable.
 
 It is possible that Your MythTV setup has many different DVB cards and some of them have multiple tuners.
 If different DVB cards have the same A/V bridge/decoder (i.e. universal cx23885 or SAA716x A/V bridge) - relaying on PCI ID & udev 
@@ -19,10 +17,3 @@ have issue with initialization races as each sub-device on DVB adapter (frontend
 concurrent way (different device drivers) so it is possible to receive adapterX mux with frontend from adapterY.
 
 dvb-mapper is small tool able to deal with all above cases. 
-To run it, launch "map-dvb-dapters.sh"
-Script should be called with some delay as some drivers needs some time to finish initialization (firmware load, etc).
-I'm using 5s delay. 
-
-Install is simple:
-1. Create "97-dvb-adapters-map.rules" file and add Your cards. 
-2. Put this file into "/etc/udev/rules.d" dir.

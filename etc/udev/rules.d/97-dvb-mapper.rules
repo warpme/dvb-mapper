@@ -1,0 +1,163 @@
+# To get some details about tuners:
+#   cat /var/log/kernel.log | grep "dvb\|DVB:"
+#   udevadm info -a -p $(udevadm info -q path -n /dev/dvb/adapter0/frontend0)
+#
+# To add new card:
+#   1. read subsystem_vendor & subsystem_device via udevadm info
+#   2. put these values in lines
+#      \
+#      ATTRS{subsystem_vendor}
+#      ATTRS{subsystem_device}
+#      \
+#   3. add desirable <name> in line:
+#      \
+#      <name>:$kernel
+#      \
+
+
+
+
+
+#----DVB-T tuners-------------
+# Nova-T 0x0070:0x9002
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x0070",	\
+	    ATTRS{subsystem_device}=="0x9002",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    Hauppauge_Nova-T:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# WinTV-HVR1100 DVB-T/Hybrid 0x0070:0x9800
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x0070",	\
+	    ATTRS{subsystem_device}=="0x9800",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    Hauppauge_HVR1100:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# K-World PE-310 Dual DVB-T PCIe tuner 0x0070:0x9800
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x17de",	\
+	    ATTRS{subsystem_device}=="0x7521",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    K-World_PE310:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# Terratec Cinergy 1200 DVB-T PCI tuner 0x0070:0x9800
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x153b",	\
+	    ATTRS{subsystem_device}=="0x1178",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    Cinergy_1200:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# MyGica T230A DVB-T2 USB tuner
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{idProduct}=="689a",	\
+	    ATTRS{idVendor}=="0572",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    MyGica_T230A:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+#----DVB-S tuners-------------
+# ProfTuners 7301 0xb034:0x3034
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0xb034",	\
+	    ATTRS{subsystem_device}=="0x3034",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    ProfTuners_ptg7301:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# DVBSky S952 0x4254:0x0952
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x4254",	\
+	    ATTRS{subsystem_device}=="0x0952",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    DvbSky_S952:$kernel \
+	    \
+	    > /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# Tevii S480 0xa000:0x4000
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0xa000",	\
+	    ATTRS{subsystem_device}=="0x4000",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    Tevii_S480:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+
+# Technotrend S3200 0x1458:0x026f
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_vendor}=="0x1458",	\
+	    ATTRS{subsystem_device}=="0x026f",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    TechnoTrend_S3200:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+#----USB tuners-------------
+# Sony Sony PlayTV 0x0003:0x1415
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{idProduct}=="0003",	\
+	    ATTRS{idVendor}=="1415",	\
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    Sony_PlayTV:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
+
+#----DVB-C tuners-------------
+# CableStar_HD 0x0002:0x1ae4
+SUBSYSTEM=="dvb", KERNEL=="dvb[0-9].frontend0",	\
+	    \
+	    ATTRS{subsystem_device}=="0x0002",	 \
+	    ATTRS{subsystem_vendor}=="0x1ae4",	 \
+	    \
+	    , PROGRAM="/bin/sh -c 'echo \
+	    \
+	    CableStar_HD:$kernel \
+	    \
+	    >> /tmp/dvb-adapter-$kernel.map; exit 0;'"
